@@ -1,0 +1,228 @@
+{
+  "name": "shipmate",
+  "displayName": "Shipmate",
+  "description": "Your shipmate for everything between writing code and merging it.",
+  "version": "0.1.0",
+  "publisher": "shipmate",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/the-atul-sharma/shipmate"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "AI",
+    "SCM Providers",
+    "Other"
+  ],
+  "keywords": [
+    "ai",
+    "git",
+    "commit",
+    "pull request",
+    "code review",
+    "tests",
+    "lighthouse"
+  ],
+  "icon": "media/icon.png",
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onView:shipmate.panel"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "shipmate",
+          "title": "Shipmate",
+          "icon": "media/icon-dark.svg"
+        }
+      ]
+    },
+    "views": {
+      "shipmate": [
+        {
+          "type": "webview",
+          "id": "shipmate.panel",
+          "name": "Shipmate"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "shipmate.showPanel",
+        "title": "Shipmate: Show Panel"
+      },
+      {
+        "command": "shipmate.generateCommitMessage",
+        "title": "Shipmate: Generate Commit Message"
+      },
+      {
+        "command": "shipmate.commit",
+        "title": "Shipmate: Commit"
+      },
+      {
+        "command": "shipmate.commitAndPush",
+        "title": "Shipmate: Commit & Push"
+      },
+      {
+        "command": "shipmate.createPR",
+        "title": "Shipmate: Create Pull Request"
+      },
+      {
+        "command": "shipmate.reviewCurrentPR",
+        "title": "Shipmate: Review Current PR"
+      },
+      {
+        "command": "shipmate.fixAllBlockers",
+        "title": "Shipmate: Fix All Blockers"
+      },
+      {
+        "command": "shipmate.fixSelectedComment",
+        "title": "Shipmate: Fix Selected Comment"
+      },
+      {
+        "command": "shipmate.generateTestsForFile",
+        "title": "Shipmate: Generate Tests for File"
+      },
+      {
+        "command": "shipmate.generateSpecForFile",
+        "title": "Shipmate: Generate Spec for File"
+      },
+      {
+        "command": "shipmate.runQualityCheck",
+        "title": "Shipmate: Run Quality Check"
+      },
+      {
+        "command": "shipmate.switchModel",
+        "title": "Shipmate: Switch Model"
+      },
+      {
+        "command": "shipmate.manageKeys",
+        "title": "Shipmate: Manage Keys"
+      },
+      {
+        "command": "shipmate.showStatus",
+        "title": "Shipmate: Show Status"
+      },
+      {
+        "command": "shipmate.toggleAIMode",
+        "title": "Shipmate: Toggle AI Mode"
+      },
+      {
+        "command": "shipmate.checkout",
+        "title": "Shipmate: Checkout Branch"
+      },
+      {
+        "command": "shipmate.pullBranch",
+        "title": "Shipmate: Pull"
+      },
+      {
+        "command": "shipmate.pushBranch",
+        "title": "Shipmate: Push"
+      },
+      {
+        "command": "shipmate.stashList",
+        "title": "Shipmate: Stash List"
+      },
+      {
+        "command": "shipmate.fetchRemote",
+        "title": "Shipmate: Fetch"
+      }
+    ],
+    "configuration": {
+      "title": "Shipmate",
+      "properties": {
+        "shipmate.defaultMode": {
+          "type": "string",
+          "enum": [
+            "shipmate",
+            "native"
+          ],
+          "default": "shipmate",
+          "description": "Default UI mode."
+        },
+        "shipmate.aiProvider": {
+          "type": "string",
+          "enum": [
+            "anthropic",
+            "openai",
+            "gemini",
+            "ollama"
+          ],
+          "default": "anthropic",
+          "description": "Active AI provider."
+        },
+        "shipmate.model": {
+          "type": "string",
+          "default": "claude-opus-4",
+          "description": "Active model identifier."
+        },
+        "shipmate.reviewStrictness": {
+          "type": "string",
+          "enum": [
+            "lenient",
+            "balanced",
+            "strict"
+          ],
+          "default": "balanced",
+          "description": "AI review strictness."
+        },
+        "shipmate.runQualityOnPRCreate": {
+          "type": "boolean",
+          "default": false,
+          "description": "Run a quality check automatically when a PR is created."
+        },
+        "shipmate.codebaseProfileEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable codebase convention profiling."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "npm run build:host && npm run build:webview",
+    "build:host": "node esbuild.config.mjs",
+    "build:webview": "vite build",
+    "watch": "node esbuild.config.mjs --watch",
+    "lint": "eslint src --ext ts,tsx",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
+    "package": "vsce package"
+  },
+  "dependencies": {
+    "lighthouse": "^13.3.0",
+    "puppeteer-core": "^25.0.4"
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^0.96.0",
+    "@gitbeaker/rest": "^43.8.0",
+    "@google/generative-ai": "^0.24.1",
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@octokit/rest": "^22.0.1",
+    "azure-devops-node-api": "^15.1.3",
+    "ollama": "^0.6.3",
+    "openai": "^6.39.0",
+    "simple-git": "^3.36.0",
+    "yaml": "^2.9.0",
+    "@types/node": "^25.9.1",
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^8.59.0",
+    "@typescript-eslint/parser": "^8.59.0",
+    "@vitejs/plugin-react": "^6.0.1",
+    "@vscode/codicons": "^0.0.45",
+    "@vscode/vsce": "^3.9.1",
+    "esbuild": "^0.28.0",
+    "eslint": "^10.3.0",
+    "prettier": "^3.8.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.13",
+    "zustand": "^5.0.13"
+  }
+}
