@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.vsix
+.DS_Store
+*.log
+.vscode-test/
+
+# Design prototypes & screenshots — not part of the shipped product;
+# the design bundle is fetchable from its source URL.
+.design/

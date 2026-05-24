@@ -1,0 +1,31 @@
+# Shipmate project configuration (optional).
+# Place a `shipmate.config.yml` at your repo root to override defaults.
+
+ai:
+  provider: anthropic        # anthropic | openai | gemini | ollama
+  model: claude-opus-4
+  reviewStrictness: balanced # lenient | balanced | strict
+
+git:
+  defaultBranch: main
+  conventionalCommits: true
+
+platform:
+  kind: github               # github | gitlab | azure
+  # owner/repo inferred from `origin` remote when omitted
+
+quality:
+  defaultMode: standard      # quick | standard | full
+  throttling: mobile         # mobile | desktop
+  ports: [3000, 5173, 8080, 4200, 8000, 3001]
+  # The Quality tab audits a PRODUCTION build, not the dev server.
+  build:
+    command: npm run build   # build command run before auditing
+    dir: dist                # output folder to serve; auto-detected when omitted
+                             # (dist, build, out, .output/public, .next, public)
+    # Or drive your own preview server instead of Shipmate's static one:
+    # previewCommand: npm run preview
+    # previewUrl: http://localhost:3000
+
+profiler:
+  enabled: true

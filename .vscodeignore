@@ -1,0 +1,42 @@
+src/**
+docs/**
+.claude/**
+.design/**
+.gitignore
+.eslintrc*
+.prettierrc*
+tsconfig*.json
+esbuild.config.mjs
+vite.config.ts
+shipmate.config.yml.example
+**/*.map
+**/*.ts
+**/.DS_Store
+.vscode-test/**
+
+# --- Trim node_modules cruft from the .vsix (lighthouse/puppeteer ship a lot) ---
+# Type defs & build configs (never loaded at runtime)
+node_modules/**/*.d.cts
+node_modules/**/*.cts
+node_modules/**/tsconfig*.json
+node_modules/**/*.eslintrc*
+node_modules/**/eslint.config.*
+node_modules/**/eslint-local-rules.*
+node_modules/**/commitlint.config.*
+node_modules/**/build-tracker.config.*
+node_modules/**/.prettierrc*
+# Docs & meta
+node_modules/**/*.md
+node_modules/**/*.markdown
+node_modules/**/CHANGELOG*
+node_modules/**/CONTRIBUTING*
+node_modules/**/AUTHORS*
+node_modules/**/.github/**
+node_modules/**/.npmignore
+node_modules/**/.editorconfig
+# Tests & fixtures
+node_modules/**/test/**
+node_modules/**/tests/**
+node_modules/**/__tests__/**
+node_modules/**/*.test.js
+node_modules/**/*.spec.js

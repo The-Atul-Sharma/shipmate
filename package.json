@@ -188,6 +188,7 @@
     "build:host": "node esbuild.config.mjs",
     "build:webview": "vite build",
     "watch": "node esbuild.config.mjs --watch",
+    "test": "node --test \"test/**/*.test.ts\"",
     "lint": "eslint src --ext ts,tsx",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
     "package": "vsce package"
