@@ -1,4 +1,4 @@
-# CODING AGENTS: READ THIS FIRST
+# CODING AGENTS: READ THIS FIRST(Merged)
 
 This is a **handoff bundle** from Claude Design (claude.ai/design).
 
